@@ -14,9 +14,9 @@ class Index
     }
    	
     public function test(){
-	echo "123";
-	$name='liujin';
-	return view('',['name'=>$name]);
+	$user=db('user')->find();    
+        
+	return view('',['user'=>$user]);
 
     }
 
