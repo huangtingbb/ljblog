@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
-
-class Index
+use think\Controller;
+class Index extends Controller
 {
     public function index()
     {
@@ -20,6 +20,23 @@ class Index
 
     }
 
+	public function shortUrl(){
+		echo $this->request->url(true);	
+	}
+	public function code62($x){
+		$show = '';
+		while($x > 0){
+			$s=$x%62;
+			if($s > 35){
+				$s = chr($s + 61);	
+			}else if($s > 9 && $s<=35){
+				$s= chr($s+55);
+			}
+			$show.=$s;
+			$x=floor($x/62);	
+		}
+		return $ahow;
+	}
     public function login(){
 	return view();
     }
